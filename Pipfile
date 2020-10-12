@@ -9,6 +9,9 @@ verify_ssl = true
 aiohttp = "*"
 aiofiles = "*"
 pytest = "*"
+setuptools = "*"
+pydantic = "*"
+pytest-asyncio = "*"
 
 [requires]
 python_version = "3.8"
