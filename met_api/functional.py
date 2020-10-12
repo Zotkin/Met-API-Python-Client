@@ -1,9 +1,10 @@
-from typing import Optional, List, Dict, Union
+from typing import Optional, List, Dict, Any
 from datetime import datetime
 from urllib.parse import urljoin
 
-from pydantic import BaseConfig
 import aiohttp
+
+from .response_objects import ObjectResponse, ObjectsResponse, DepartmentsResponse
 
 OBJECTS_URL = "https://collectionapi.metmuseum.org/public/collection/v1/objects"
 DEPARTMENTS_URL = "https://collectionapi.metmuseum.org/public/collection/v1/departments"
@@ -12,12 +13,9 @@ SEARCH_URL = "https://collectionapi.metmuseum.org/public/collection/v1/search"
 session = aiohttp.ClientSession()
 
 
-
-
-
 async def get_objects(date: Optional[datetime], department_ids: Optional[List[int]]) -> ObjectsResponse:
     params = {"date": date, "department_ids": department_ids}
-    with session.get(OBJECTS_URL, params=params) as resp:
+    async with session.get(OBJECTS_URL, params=params) as resp:
         # todo add error handling
         data = await resp.json()
         response_object = ObjectsResponse(**data)
@@ -26,7 +24,7 @@ async def get_objects(date: Optional[datetime], department_ids: Optional[List[in
 
 async def get_object(id_: int) -> ObjectResponse:
     url = urljoin(OBJECTS_URL, str(id_))
-    with session.get(url) as resp:
+    async with session.get(url) as resp:
         data = await resp.json()
         response_object = ObjectResponse(**data)
     return response_object
@@ -34,7 +32,7 @@ async def get_object(id_: int) -> ObjectResponse:
 
 async def get_departments() -> DepartmentsResponse:
 
-    with session.get(DEPARTMENTS_URL) as resp:
+    async with session.get(DEPARTMENTS_URL) as resp:
         data = await resp.json()
         response_object = DepartmentsResponse(**data)
     return response_object
@@ -63,7 +61,7 @@ async def search(q: str,
         "dateBegin": date_begin,
         "dateEnd": date_end
     }
-    with session.get(SEARCH_URL, parameters=parameters) as resp:
+    async with session.get(SEARCH_URL, parameters=parameters) as resp:
         data = await resp.json()
         response_object = ObjectsResponse(**data)
         return response_object
