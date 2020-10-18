@@ -1,23 +1,23 @@
 from typing import List, Optional, Dict, Union
 from datetime import datetime
 
-from pydantic import BaseConfig
+from pydantic import BaseModel
 
-class ObjectsResponse(BaseConfig):
+class ObjectsResponse(BaseModel):
     total: int
     objectIDs: List[int]
 
 
-class ObjectResponse(BaseConfig):
+class ObjectResponse(BaseModel):
     objectID: int
     isHighlight: bool
-    accessionNumber: str  # todo might be parsed to float by python
-    accessionYear: str  # todo might be parsed to int by python
+    accessionNumber: str
+    accessionYear: str
     isPublicDomain: bool
     primaryImage: str
     primaryImageSmall: str
     additionalImages: List[str]
-    constituents: List[Dict[str, str]]
+    constituents: Optional[List[Dict[str, Union[str, int]]]]
     department: str
     objectName: str
     title: str
@@ -26,7 +26,7 @@ class ObjectResponse(BaseConfig):
     dynasty: str
     reign: str
     portfolio: str
-    artistRole: int
+    artistRole: str
     artistPrefix: str
     artistDisplayName: str
     artistDisplayBio: str
@@ -49,23 +49,23 @@ class ObjectResponse(BaseConfig):
     state: str
     county: str
     country: str
-    region: Optional[str]
-    subregion: Optional[str]
-    locale: Optional[str]
-    locus: Optional[str]
-    excavation: Optional[str]
-    river: Optional[str]
+    region: str
+    subregion: str
+    locale: str
+    locus: str
+    excavation: str
+    river: str
     classification: str
     rightsAndReproduction: str
     linkResource: str
-    metadataDate: datetime
+    metadataDate: str
     repository: str
     objectURL: str
-    tags: List[Dict[str, str]]
+    tags: Optional[List[Dict[str, str]]]
     objectWikidata_URL: str
     isTimelineWork: bool
-    GalleryNumber: Optional[int]
+    GalleryNumber: str
 
 
-class DepartmentsResponse(BaseConfig):
+class DepartmentsResponse(BaseModel):
     departments: List[Dict[str, Union[str, int]]]
