@@ -4,7 +4,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="met_api", # Replace with your own username
+    name="met_api",  # Replace with your own username
     version="0.0.1",
     author="Yevhenii Zotkin",
     author_email="yevhenii.zotkin@protonmail.com",
@@ -18,5 +18,5 @@ setuptools.setup(
         "License :: OSI Approved :: GNU v3",
         "Operating System :: Linux",
     ],
-    python_requires='>=3.8',
+    python_requires=">=3.8",
 )
