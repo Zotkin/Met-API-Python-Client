@@ -15,6 +15,8 @@ SEARCH_URL = "https://collectionapi.metmuseum.org/public/collection/v1/search"
 def get_objects(
     date: Optional[datetime] = None, department_ids: Optional[List[int]] = None
 ) -> ObjectsResponse:
+    if date:
+        date = date.strftime("%Y-%m-%d")
     params = {"date": date, "department_ids": department_ids}
     response = requests.get(OBJECTS_URL, params=params)
     data = json.loads(response.text)
@@ -49,8 +51,8 @@ def search(
     medium: Optional[str] = None,
     has_images: Optional[bool] = None,
     geo_location: Optional[str] = None,
-    date_begin: Optional[str] = None,
-    date_end: Optional[str] = None,
+    date_begin: Optional[datetime] = None,
+    date_end: Optional[datetime] = None,
 ) -> ObjectsResponse:
     if (date_begin and date_end) and date_begin > date_end:
         raise ValueError(f"date_end {date_end} > date_begin {date_begin}")
@@ -58,7 +60,9 @@ def search(
         raise ValueError(
             "Both date_begin and date_end have to be present if one of is present."
         )
-
+    if date_begin:
+        date_begin = date_begin.strftime("%Y-%m-%d")
+        date_end = date_end.strftime("%Y-%m-%d")
     params = {
         "q": q,
         "isHighlight": is_highlight,
