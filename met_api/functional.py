@@ -13,7 +13,7 @@ SEARCH_URL = "https://collectionapi.metmuseum.org/public/collection/v1/search"
 
 
 def get_objects(
-    date: Optional[datetime], department_ids: Optional[List[int]]
+    date: Optional[datetime] = None, department_ids: Optional[List[int]] = None
 ) -> ObjectsResponse:
     params = {"date": date, "department_ids": department_ids}
     response = requests.get(OBJECTS_URL, params=params)
@@ -42,15 +42,15 @@ def get_departments() -> DepartmentsResponse:
 
 def search(
     q: str,
-    is_highlight: Optional[bool],
-    department_id: Optional[int],
-    is_on_view: Optional[bool],
-    artist_or_culture: Optional[bool],
-    medium: Optional[str],
-    has_images: Optional[bool],
-    geo_location: Optional[str],
-    date_begin: Optional[str],
-    date_end: Optional[str],
+    is_highlight: Optional[bool] = None,
+    department_id: Optional[int] = None,
+    is_on_view: Optional[bool] = None,
+    artist_or_culture: Optional[bool] = None,
+    medium: Optional[str] = None,
+    has_images: Optional[bool] = None,
+    geo_location: Optional[str] = None,
+    date_begin: Optional[str] = None,
+    date_end: Optional[str] = None,
 ) -> ObjectsResponse:
     if (date_begin and date_end) and date_begin > date_end:
         raise ValueError(f"date_end {date_end} > date_begin {date_begin}")
