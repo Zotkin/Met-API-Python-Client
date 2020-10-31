@@ -8,10 +8,10 @@ setuptools.setup(
     version="0.0.1",
     author="Yevhenii Zotkin",
     author_email="yevhenii.zotkin@protonmail.com",
-    description="An unofficial async MET API client.",
+    description="An unofficial MET API client.",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/Zotkin/met_api_async_client",
+    url="https://github.com/Zotkin/met_api_client",
     packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
