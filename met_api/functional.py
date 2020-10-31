@@ -17,7 +17,7 @@ def get_objects(
 ) -> ObjectsResponse:
     if date:
         date = date.strftime("%Y-%m-%d")
-    params = {"date": date, "department_ids": department_ids}
+    params = {"metadataDate": date, "departmentIds": department_ids}
     response = requests.get(OBJECTS_URL, params=params)
     data = json.loads(response.text)
     response_object = ObjectsResponse(**data)

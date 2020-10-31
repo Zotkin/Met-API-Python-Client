@@ -6,66 +6,66 @@ from pydantic import BaseModel
 
 class ObjectsResponse(BaseModel):
     total: int
-    objectIDs: List[int]
+    objectIDs: Optional[List[int]]
 
 
 class ObjectResponse(BaseModel):
     objectID: int
-    isHighlight: bool
-    accessionNumber: str
-    accessionYear: str
-    isPublicDomain: bool
-    primaryImage: str
-    primaryImageSmall: str
-    additionalImages: List[str]
+    isHighlight: Optional[bool]
+    accessionNumber: Optional[str]
+    accessionYear: Optional[str]
+    isPublicDomain: Optional[bool]
+    primaryImage: Optional[str]
+    primaryImageSmall: Optional[str]
+    additionalImages: Optional[List[str]]
     constituents: Optional[List[Dict[str, Union[str, int]]]]
-    department: str
-    objectName: str
-    title: str
-    culture: str
-    period: str
-    dynasty: str
-    reign: str
-    portfolio: str
-    artistRole: str
-    artistPrefix: str
-    artistDisplayName: str
-    artistDisplayBio: str
-    artistSuffix: str
-    artistAlphaSort: str
-    artistNationality: str
-    artistBeginDate: str
-    artistEndDate: str
-    artistGender: str
-    artistWikidata_URL: str
-    artistULAN_URL: str
-    objectDate: str
-    objectBeginDate: int
-    objectEndDate: int
-    medium: str
-    dimensions: str
-    creditLine: str
-    geographyType: str
-    city: str
-    state: str
-    county: str
-    country: str
-    region: str
-    subregion: str
-    locale: str
-    locus: str
-    excavation: str
-    river: str
-    classification: str
-    rightsAndReproduction: str
-    linkResource: str
-    metadataDate: str
-    repository: str
-    objectURL: str
+    department: Optional[str]
+    objectName: Optional[str]
+    title: Optional[str]
+    culture: Optional[str]
+    period: Optional[str]
+    dynasty: Optional[str]
+    reign: Optional[str]
+    portfolio: Optional[str]
+    artistRole: Optional[str]
+    artistPrefix: Optional[str]
+    artistDisplayName: Optional[str]
+    artistDisplayBio: Optional[str]
+    artistSuffix: Optional[str]
+    artistAlphaSort: Optional[str]
+    artistNationality: Optional[str]
+    artistBeginDate: Optional[str]
+    artistEndDate: Optional[str]
+    artistGender: Optional[str]
+    artistWikidata_URL: Optional[str]
+    artistULAN_URL: Optional[str]
+    objectDate: Optional[str]
+    objectBeginDate: Optional[int]
+    objectEndDate: Optional[int]
+    medium: Optional[str]
+    dimensions: Optional[str]
+    creditLine: Optional[str]
+    geographyType: Optional[str]
+    city: Optional[str]
+    state: Optional[str]
+    county: Optional[str]
+    country: Optional[str]
+    region: Optional[str]
+    subregion: Optional[str]
+    locale: Optional[str]
+    locus: Optional[str]
+    excavation: Optional[str]
+    river: Optional[str]
+    classification: Optional[str]
+    rightsAndReproduction: Optional[str]
+    linkResource: Optional[str]
+    metadataDate: Optional[str]
+    repository: Optional[str]
+    objectURL: Optional[str]
     tags: Optional[List[Dict[str, str]]]
-    objectWikidata_URL: str
-    isTimelineWork: bool
-    GalleryNumber: str
+    objectWikidata_URL: Optional[str]
+    isTimelineWork: Optional[bool]
+    GalleryNumber: Optional[str]
 
 
 class DepartmentsResponse(BaseModel):

@@ -22,6 +22,12 @@ def test_get_objects(date, department_ids):
     response = get_objects(date=date, department_ids=department_ids)
     assert type(response) is ObjectsResponse
 
+def test_get_object_date():
+    unlim_date_response = get_objects()
+    lim_date_response = get_objects(datetime(year=2020, month=5, day=8))
+
+    assert  unlim_date_response.total > lim_date_response.total
+
 
 @pytest.mark.parametrize("id_", list(range(15)))
 def test_get_object(id_):
@@ -41,8 +47,9 @@ def test_get_object(id_):
 @pytest.mark.parametrize("medium", [None])
 @pytest.mark.parametrize("has_images", [None])
 @pytest.mark.parametrize("geo_location", [None])
-@pytest.mark.parametrize("date_begin", [1700, 1900, None])
-@pytest.mark.parametrize("date_end", [1800, None])
+@pytest.mark.parametrize("date_begin", [datetime(year=1700, month=1, day=1),
+                                        datetime(year=1800, month=1, day=1), None])
+@pytest.mark.parametrize("date_end", [datetime(year=1800, month=1, day=1), None])
 def test_search(
     q,
     is_highlight,
@@ -85,3 +92,8 @@ def test_search(
             date_end,
         )
         assert type(response) == ObjectsResponse
+
+def test_search_has_images():
+    with_images = search(q='flower',has_images=True)
+    all = search(q='flower')
+    assert  all.total > with_images.total
