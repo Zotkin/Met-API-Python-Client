@@ -1,6 +1,6 @@
 # The Metropolitan Museum Of Art Python API Client
 
-[![CI to docker hub Actions Status](https://github.com/{userName}/{repoName}/workflows/{workflowName}/badge.svg)](https://github.com/{userName}/{repoName}/actions)
+![tests](https://github.com/Zotkin/Met-API-Python-Client/workflows/tests/badge.svg)
 
 An unofficial python client for The Metropolitan Museum of Art Collection API.
 This client fully implements a convinient python interface for the methods described [here](https://metmuseum.github.io/).
