@@ -1,4 +1,4 @@
-from typing import List, Optional, Dict, Union
+from typing import List, Optional, Dict, Union, Any
 
 from pydantic import BaseModel
 
@@ -61,7 +61,7 @@ class ObjectResponse(BaseModel):
     metadataDate: Optional[str]
     repository: Optional[str]
     objectURL: Optional[str]
-    tags: Optional[List[Dict[str, str]]]
+    tags: Optional[List[Any]]
     objectWikidata_URL: Optional[str]
     isTimelineWork: Optional[bool]
     GalleryNumber: Optional[str]

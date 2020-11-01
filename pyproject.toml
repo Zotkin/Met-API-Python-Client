@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "met_api"
-version = "0.1.0"
+version = "0.1.1"
 description = "\"Metropolitain Museum of Art API client.\""
 authors = ["Yevhenii Zotkin <yevhenii.zotkin@protonmail.com>"]
 license = "GPLv3"
