@@ -41,4 +41,8 @@ jobs:
 
      - name: Image digest
        run: echo ${{ steps.docker_build.outputs.digest }}
-          
+     - name: run pytest
+       id: pytest
+       uses: docker://zotkin/met_api:latest
+       with:
+         args: pytest 
